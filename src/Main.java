@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        NQueensTest nQueensTest = new NQueensTest();
-        nQueensTest.test();
+        FindMedian2Test findMedianTest2 = new FindMedian2Test();
+        findMedianTest2.test();
     }
 
 }
