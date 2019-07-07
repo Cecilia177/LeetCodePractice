@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class MaxProfitAssignment {
     /*解法一：
     *   对于每个worker, 遍历其能胜任的工作中最大profit（注意：并非越难的工作profit越高）
@@ -9,32 +11,38 @@ public class MaxProfitAssignment {
         int[] profitPer = new int[worker.length];
 
         quickSort(difficulty, profit, 0, profit.length - 1);
-        int pos = profit.length - 1;
-        for(int worknum = 0; worknum < worker.length; ) {
+
+        System.out.println("profit after sorted: " + Arrays.toString(profit));
+
+        for(int worknum = 0, profitnum = profit.length - 1; worknum < worker.length && profitnum >= 0 ; profitnum--) {
             for(int i = 0; i < worker.length; i ++) {
-                if(worker[i] >= difficulty[pos] && profitPer[i] == 0) {
-                    profitPer[i] = profit[pos];
+                if(worker[i] >= difficulty[profitnum] && profitPer[i] == 0) {
+                    profitPer[i] = profit[profitnum];
                     worknum++;
+                    System.out.println("worknum: " + worknum + " profitPer" + Arrays.toString(profitPer));
                 }
             }
         }
 
         int totalProfit = 0;
         for(int i = 0; i < profitPer.length; i++) {
-//            System.out.println(profitPer[i]);
             totalProfit += profitPer[i];
         }
         return totalProfit;
     }
 
     private void quickSort(int[] difficulty, int[] profit, int low, int high) {
-
+        if(low >= high) {
+            return;
+        }
         int pivotPosition = partition(difficulty, profit, low, high);
+        System.out.println("pivotPos: " + pivotPosition);
         quickSort(difficulty, profit, low, pivotPosition - 1);
         quickSort(difficulty, profit, pivotPosition + 1, high);
     }
 
     private int partition(int[] difficulty, int[] profit, int low, int high) {
+
         int pivot = profit[low];
         int pivotDiff = difficulty[low];
         while (low < high) {
@@ -43,15 +51,11 @@ public class MaxProfitAssignment {
             }
             profit[low] = profit[high];
             difficulty[low] = difficulty[high];
-            low++;
-
             while (low < high && profit[low] <= pivot) {
                 low ++;
             }
             profit[high] = profit[low];
             difficulty[high] = difficulty[low];
-            high--;
-
         }
         profit[low] = pivot;
         difficulty[low] = pivotDiff;

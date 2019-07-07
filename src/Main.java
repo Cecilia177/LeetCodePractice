@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        MaxProfitAssignmentTest maxProfitAssignmentTest = new MaxProfitAssignmentTest();
-        maxProfitAssignmentTest.test();
+        WordBreakTest1 wordBreakTest1 = new WordBreakTest1();
+        wordBreakTest1.test();
     }
 
 }
