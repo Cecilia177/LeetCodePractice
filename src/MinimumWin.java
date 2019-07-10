@@ -38,12 +38,14 @@ public class MinimumWin {
             System.out.println("right: " + right);
             while (match == t.length() && right < s.length()) {
                 window[sArr[left]]--;
+
                 if (window[sArr[right]] < tArr[sArr[right]]) {
                     match--;
                 }
                 left++;
             }
-            if (subStr[2] > right - left) {
+            System.out.println("left: " + left);
+            if (match == t.length() && subStr[2] > right - left) {
                 subStr[0] = left + 1;
                 subStr[1] = right;
                 subStr[2] = right - left;
