@@ -3,8 +3,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        AddingTest addingTest = new AddingTest();
-        addingTest.test();
+        MinimunWinTest minimunWinTest = new MinimunWinTest();
+        minimunWinTest.test();
     }
 
 }
