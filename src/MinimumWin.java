@@ -19,6 +19,7 @@ public class MinimumWin {
         int[] window = new int[256];
 
         for (int i = 0; i < t.length(); i++) {
+
             tArr[t.charAt(i)]++;
 
         }
@@ -26,42 +27,49 @@ public class MinimumWin {
         subStr[2] = s.length();
         int match = 0;
         while (right < s.length()) {
+            boolean flag = false;
             while (match < t.length() && right < s.length()) {         //窗口暂不满足条件时
                 if (tArr[sArr[right]] != 0) {   //right所指字符存在于t中，将该字符加入window中
                     window[sArr[right]]++;
-                    if (window[sArr[right]] == tArr[sArr[right]]) {
+                    if (window[sArr[right]] <= tArr[sArr[right]]) {
                         match++;
                     }
                 }
                 right++;
             }
+            System.out.println("match: " + match);
             System.out.println("right: " + right);
-            while (match == t.length() && right < s.length()) {
+            while (match == t.length() && left < right) {
+                flag = true;
                 if(tArr[sArr[left]] != 0) {
                     window[sArr[left]]--;
 
-                    if (window[sArr[right]] < tArr[sArr[right]]) {
+                    if (window[sArr[left]] < tArr[sArr[left]]) {
                         match--;
+                        left ++;
+                        break;
                     }
                 }
 
                 left++;
             }
             System.out.println("left: " + left);
-            if (match == t.length() && subStr[2] > right - left) {
-                subStr[0] = left + 1;
+            if (flag && subStr[2] > right - left) {
+                subStr[0] = left - 1;
                 subStr[1] = right;
                 subStr[2] = right - left;
+                System.out.println("substring from " + subStr[0] + " to " + subStr[1]);
             }
         }
+
         return s.substring(subStr[0], subStr[1]);
     }
 }
 
 class MinimunWinTest {
     public void test() {
-        String s = "ADOBECODEBANC";
-        String t = "ABC";
+        String s = "aa";
+        String t = "aa";
         //expected return "BANC"
         MinimumWin minimumWin = new MinimumWin();
         System.out.println(minimumWin.minWindow(s, t));
