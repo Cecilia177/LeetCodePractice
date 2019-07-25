@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-       WildcardTest test = new WildcardTest();
+       UniquePermutationTest test = new UniquePermutationTest();
        test.test();
     }
 

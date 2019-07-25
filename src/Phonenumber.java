@@ -20,20 +20,30 @@ public class Phonenumber {
             return result;
         }
 
-        getSubResult(digits, numberToChar, 0, digits.length() - 1);
-
+        getSubResult(digits, numberToChar, 0, "");
         return result;
 
     }
 
-    private String getSubResult(String digits, Map<Character, String> numberToChar, int start, int end) {
-        if(start > end) {
-            return "";
+    private void getSubResult(String digits, Map<Character, String> numberToChar, int start, String subResult) {
+        if(start == digits.length()) {
+            result.add(subResult);
+            return;        //递归函数中注意定义返回条件
         }
         String str = numberToChar.get(digits.charAt(start));   //第一位数字对应的字符串
         for(int i = 0; i < str.length(); i++) {
-            String result1 = str.charAt(i) + "" + getSubResult(digits, numberToChar, start + 1, end);
-            result.add(result1);
+            getSubResult(digits, numberToChar, start + 1, subResult + str.charAt(i));
+        }
+
+    }
+}
+
+class PhonenumberTest {
+    public void test() {
+        List<String> result = new Phonenumber().letterCombinations("23");
+        for(int i = 0; i < result.size(); i++) {
+            System.out.print(result.get(i) + " ");
         }
     }
+
 }
