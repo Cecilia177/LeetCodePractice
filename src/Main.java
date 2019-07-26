@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-       UniquePermutationTest test = new UniquePermutationTest();
+       CombinationSumTest2 test = new CombinationSumTest2();
        test.test();
     }
 
