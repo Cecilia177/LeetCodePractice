@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-       CombinationSumTest2 test = new CombinationSumTest2();
+       NQueensCountTest test = new NQueensCountTest();
        test.test();
     }
 
