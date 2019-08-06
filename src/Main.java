@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-       NQueensCountTest test = new NQueensCountTest();
+        WordBreakTest test = new WordBreakTest();
        test.test();
     }
 

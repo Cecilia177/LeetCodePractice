@@ -3,37 +3,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WordBreak {
+
+    List<String> sentences = new ArrayList<>();
     public List<String> wordBreak(String s, List<String> wordDict) {
 
-        List<String> sentences = new ArrayList<>();
 
-        for(int i = 0; i < wordDict.size(); i++) {
-            getSentence(s, wordDict, i, sentences);
+        if(new WordBreak1().breakable(s, wordDict)) {
+            getSentence(s, wordDict, 0, "");
         }
-
         return sentences;
     }
 
-    public String getSentence(String s, List<String> wordDict, int index, List<String> sentences) {
-            if(index >= wordDict.size()) {
-                return "";
-            }
-           String word = wordDict.get(index);
-           if(s == "") {
-               return "";
+    public void getSentence(String s, List<String> wordDict, int start, String sentence) {
+        if(start == s.length()) {
+            sentences.add(sentence);
+            //System.out.println("found one");
+            return;
+        }
+       for(int i = start + 1; i <= s.length(); i++) {
+           if(wordDict.contains(s.substring(start, i))) {
+               String newSentence;
+               if(sentence.equals("")) {
+                   newSentence = s.substring(start, i);
+               } else {
+                   newSentence = sentence + " " + s.substring(start, i);
+               }
+
+               //System.out.println(newSentence);
+               getSentence(s, wordDict, i, newSentence);
+
            }
-           if(s.indexOf(word) != -1) {
-               String subs1 = s.substring(0, s.indexOf(word));
-               String subs2 = s.substring(s.indexOf(word) + word.length());
-               System.out.println("subs1: " + subs1);
-               System.out.println("subs2: " + subs2);
-               String sentence = getSentence(subs1, wordDict, 0, sentences) + " " + word + " " + getSentence(subs2, wordDict, 0, sentences);
-               sentences.add(sentence);
-           } else {
-               System.out.println("failure");
-               return getSentence(s, wordDict, index + 1, sentences);
-           }
-            return "";
+       }
+       return;
 
     }
 
