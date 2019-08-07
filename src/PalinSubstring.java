@@ -22,7 +22,8 @@ public class PalinSubstring {
 
     }
     /*方法二：用一维dp，dp[i]中保存以i为中心（或以i与i+1为中心）的回文子串个数
-    * 时间与空间消耗明显优于方法一*/
+    * 时间与空间消耗明显优于方法一
+    * 该方法应该不属于动态规划*/
     private int num = 0;
     public int countSubstrings2(String s) {
         int[] dp = new int[s.length()];
