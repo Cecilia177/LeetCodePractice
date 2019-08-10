@@ -5,7 +5,7 @@ public class LRUCache extends LinkedHashMap {
     private final int SIZE;
 
     public LRUCache(int capacity) {
-        super(capacity, 0.75f, true);
+        super(capacity, 0.75f, true);  //LinkesHashMap构造函数
         SIZE = capacity;
     }
 
@@ -18,7 +18,7 @@ public class LRUCache extends LinkedHashMap {
         if(this.containsKey(key)) {
             return (int)super.get(key);
         } else {
-            return -1;
+            return -1;             //不存在所查找的key时返回-1
         }
 
     }

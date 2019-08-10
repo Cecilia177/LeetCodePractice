@@ -1,11 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        InterleaveStringTest test = new InterleaveStringTest();
+        MaxSquareTest test = new MaxSquareTest();
        test.test();
+
     }
 
 }
