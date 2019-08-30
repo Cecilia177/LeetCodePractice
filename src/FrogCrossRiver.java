@@ -9,7 +9,6 @@ public class FrogCrossRiver {
             position.put(stones[i], steps);
         }
 
-
         position.get(stones[0]).add(1);
 //        Iterator<Integer> iterator = position.keySet().iterator();
         for(int i = 0; i < stones.length; i++) {

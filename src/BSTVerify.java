@@ -12,16 +12,14 @@ public class BSTVerify {
            while (t.left != null) {
                t = t.left;
            }
-           temp = t.val;
+           temp = t.val;            //temp保存最左节点的值
 
         }
-        System.out.println("temp: " + temp);
         return inOrder(root);
     }
     private boolean inOrder(TreeNode t) {
         if(t != null) {
             if(inOrder(t.left)) {
-                System.out.println("temp: " + temp);
                 if(temp >= t.val) {
                     return false;
                 } else {
@@ -29,10 +27,11 @@ public class BSTVerify {
                     return inOrder(t.right);
                 }
             }
-
         }
         return true;
     }
+
+
 
 }
 

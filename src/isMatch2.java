@@ -22,9 +22,9 @@ public class isMatch2 {
                    dp[i+1][j+1] = dp[i][j];
                }
                if(p.charAt(j) == '*') {
-                   if(p.charAt(j-1) != '.') {          //*前为字母
-                       dp[i+1][j+1] = dp[i+1][j-1] && s.charAt(i) != p.charAt(j-1);
-                   } else {                           //*前为.  ...  分别为匹配多个，匹配一个，匹配0个的情况
+                   if(p.charAt(j-1) != '.' && s.charAt(i) != p.charAt(j-1)) {          //*前为字母
+                       dp[i+1][j+1] = dp[i+1][j-1] ;      //匹配0个字母
+                   } else {                           //*前为.      ...  分别为匹配多个，匹配一个，匹配0个的情况
                        dp[i+1][j+1] = dp[i][j+1] || dp[i+1][j] || dp[i+1][j-1];
                    }
                }
