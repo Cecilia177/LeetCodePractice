@@ -64,8 +64,3 @@ public class PrintInOrder {
     }
 }
 
-class PrintOrder2 {
-    public void print() {
-        
-    }
-}
